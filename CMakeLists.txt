@@ -27,6 +27,7 @@ target_include_directories(
     multiarray_multiarray ${warning_guard}
     INTERFACE
     "$<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/include>"
+    "$<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/submodules/visit_struct/include>"
 )
 
 target_compile_features(multiarray_multiarray INTERFACE cxx_std_17)

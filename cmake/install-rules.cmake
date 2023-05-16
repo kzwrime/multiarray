@@ -1,6 +1,10 @@
 if(PROJECT_IS_TOP_LEVEL)
   set(
-      CMAKE_INSTALL_INCLUDEDIR "include/multiarray-${PROJECT_VERSION}"
+      CMAKE_INSTALL_INCLUDEDIR "include/multiarray"
+      CACHE PATH ""
+  )
+  set(
+      CMAKE_INSTALL_INCLUDEDIR_VISIT_STRUCT "include/visit_struct"
       CACHE PATH ""
   )
 endif()
@@ -21,9 +25,15 @@ install(
 )
 
 install(
+    DIRECTORY submodules/visit_struct/include/
+    DESTINATION "${CMAKE_INSTALL_INCLUDEDIR_VISIT_STRUCT}"
+    COMPONENT multiarray_Development
+)
+
+install(
     TARGETS multiarray_multiarray
     EXPORT multiarrayTargets
-    INCLUDES DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}"
+    INCLUDES DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}" "${CMAKE_INSTALL_INCLUDEDIR_VISIT_STRUCT}"
 )
 
 write_basic_package_version_file(
