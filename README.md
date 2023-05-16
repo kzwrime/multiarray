@@ -1,6 +1,6 @@
 # multiarray
 
-This is the multiarray project.
+This is the multiarray project. A simple C++ templated multiarray class for array, a header-only library
 
 # Building and installing
 
@@ -8,12 +8,10 @@ See the [BUILDING](BUILDING.md) document.
 
 # Contributing
 
+You can see [cmake-init]https://github.com/friendlyanon/cmake-init first since this project is inited by cmake-init.
+
 See the [CONTRIBUTING](CONTRIBUTING.md) document.
 
 # Licensing
 
-<!--
-Please go to https://choosealicense.com/licenses/ and choose a license that
-fits your needs. The recommended license for a project of this type is the
-Boost Software License 1.0.
--->
+Boost Software License 1.0. See the [LICENSE](LICENSE) document.
