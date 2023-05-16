@@ -10,7 +10,7 @@ See the [BUILDING](BUILDING.md) document.
 
 You can see [cmake-init](https://github.com/friendlyanon/cmake-init) first since this project is inited by cmake-init.
 
-See the [CONTRIBUTING](CONTRIBUTING.md) document.
+See the [CONTRIBUTING](CONTRIBUTING.md) document and [HACKING](HACKING.md).
 
 # Licensing
 
