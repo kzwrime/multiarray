@@ -103,8 +103,7 @@ class multiarray {
   dims_t<n_dims> dims;
 
   dims_type size() const {
-    return std::apply([](auto &&...data) { return (data * ...); },
-                      this->dims);
+    return std::apply([](auto &&...data) { return (data * ...); }, this->dims);
   }
 
   std::string string_dims() const { return tupleToString(this->dims); }
@@ -156,7 +155,7 @@ class multiarray {
     std::apply([](auto &...args) { ((args = 0), ...); }, dims);
   }
 
-  multiarray(){}
+  multiarray() {}
 
   multiarray(T _pointer) : pointer(_pointer) {}
 
@@ -200,7 +199,8 @@ class multiarray {
   }
 };
 
-template <typename T, dims_type n_dims, bool ROW_MAJOR = true, dims_type... strides>
+template <typename T, dims_type n_dims, bool ROW_MAJOR = true,
+          dims_type... strides>
 class multiarray_s : public multiarray<T, n_dims, ROW_MAJOR> {
   static_assert(std::is_pointer_v<T>, "Type T must be pointer");
   static_assert(sizeof...(strides) == n_dims,
@@ -231,7 +231,7 @@ class multiarray_s : public multiarray<T, n_dims, ROW_MAJOR> {
       return this->pointer[get_offset_col(indices...)];
   }
 
-  multiarray_s() : multiarray<T, n_dims, ROW_MAJOR>(){}
+  multiarray_s() : multiarray<T, n_dims, ROW_MAJOR>() {}
 
   multiarray_s(T _pointer) : multiarray<T, n_dims, ROW_MAJOR>(_pointer) {}
 
@@ -248,14 +248,14 @@ class multiarray_s : public multiarray<T, n_dims, ROW_MAJOR> {
  private:
   template <typename... Dims_>
   inline dims_type get_offset_col(dims_type index, Dims_... indices) {
-    constexpr int i_dim = n_dims - sizeof...(indices) - 1;
+    constexpr dims_type i_dim = n_dims - sizeof...(indices) - 1;
     return index - get_i_of_pack_num<i_dim, strides...>() +
            std::get<i_dim>(this->dims) * get_offset_col(indices...);
   }
 
   template <typename... Dims_>
   inline dims_type get_offset_col(dims_type index) {
-    constexpr int i_dim = n_dims - 1;
+    constexpr dims_type i_dim = n_dims - 1;
     return index - get_i_of_pack_num<i_dim, strides...>();
   }
 
@@ -268,7 +268,7 @@ class multiarray_s : public multiarray<T, n_dims, ROW_MAJOR> {
   template <typename... Dims_>
   inline dims_type get_offset_row_sum(dims_type part_sum, dims_type index,
                                       Dims_... indices) {
-    constexpr int i_dim = n_dims - sizeof...(indices) - 1;
+    constexpr dims_type i_dim = n_dims - sizeof...(indices) - 1;
     return get_offset_row_sum(part_sum * std::get<i_dim>(this->dims) + index -
                                   get_i_of_pack_num<i_dim, strides...>(),
                               indices...);
@@ -276,7 +276,7 @@ class multiarray_s : public multiarray<T, n_dims, ROW_MAJOR> {
 
   template <typename... Dims_>
   inline dims_type get_offset_row_sum(dims_type part_sum, dims_type index) {
-    constexpr int i_dim = n_dims - 1;
+    constexpr dims_type i_dim = n_dims - 1;
     return part_sum * std::get<i_dim>(this->dims) + index -
            get_i_of_pack_num<i_dim, strides...>();
   }
