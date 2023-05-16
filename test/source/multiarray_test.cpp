@@ -1,6 +1,6 @@
-#include <cassert>
-
 #include "multiarray/multiarray.hpp"
+
+#include <cassert>
 
 void test_at() {
   ma::multiarray<int *, 3> a1;

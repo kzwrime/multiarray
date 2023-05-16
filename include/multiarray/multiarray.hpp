@@ -108,15 +108,15 @@ class multiarray {
 
   std::string string_dims() const { return tupleToString(this->dims); }
 
-  template <typename... Dims_>
-  void set_dims(Dims_... _dims) {
+  template <typename... Types>
+  void set_dims(Types... _dims) {
     static_assert(sizeof...(_dims) == n_dims,
                   "Number of _dims must be equal to n_dims");
     dims = std::make_tuple(_dims...);
   }
 
-  template <typename... Dims_>
-  void set(T _pointer, Dims_... _dims) {
+  template <typename... Types>
+  void set(T _pointer, Types... _dims) {
     static_assert(sizeof...(_dims) == n_dims,
                   "Number of _dims must be equal to n_dims");
     this->pointer = _pointer;
@@ -127,23 +127,23 @@ class multiarray {
   // calculate the offset in the linear array
 
   // at (column major)
-  template <typename... Dims_>
-  inline T_no_pointer &at_colm(Dims_... indices) {
+  template <typename... Types>
+  inline T_no_pointer &at_colm(Types... indices) {
     static_assert(sizeof...(indices) == n_dims,
                   "Number of indices must be equal to n_dims");
     return this->pointer[get_offset_col(indices...)];
   }
 
   // at (row major)
-  template <typename... Dims_>
-  inline T_no_pointer &at_row(Dims_... indices) {
+  template <typename... Types>
+  inline T_no_pointer &at_row(Types... indices) {
     static_assert(sizeof...(indices) == n_dims,
                   "Number of indices must be equal to n_dims");
     return this->pointer[get_offset_row(indices...)];
   }
 
-  template <typename... Dims_>
-  inline T_no_pointer &operator()(Dims_... indices) {
+  template <typename... Types>
+  inline T_no_pointer &operator()(Types... indices) {
     if constexpr (ROW_MAJOR)
       return this->pointer[get_offset_row(indices...)];
     else
@@ -162,40 +162,42 @@ class multiarray {
   multiarray(const multiarray<T, n_dims, ROW_MAJOR> &array)
       : pointer(array.pointer), dims(array.dims) {}
 
-  template <typename... Dims_>
-  multiarray(T _pointer, Dims_... _dims) {
+  template <typename... Types>
+  multiarray(T _pointer, Types... _dims) {
     set(_pointer, _dims...);
   }
 
  private:
-  template <typename... Dims_>
-  inline dims_type get_offset_col(dims_type index, Dims_... indices) {
-    return index + std::get<n_dims - sizeof...(indices) - 1>(this->dims) *
-                       get_offset_col(indices...);
+  template <typename Type0, typename... Types>
+  inline dims_type get_offset_col(Type0 index, Types... indices) {
+    return static_cast<dims_type>(index) +
+           std::get<n_dims - sizeof...(indices) - 1>(this->dims) *
+               get_offset_col(indices...);
   }
 
-  template <typename... Dims_>
-  inline dims_type get_offset_col(dims_type index) {
-    return index;
+  template <typename Type0, typename... Types>
+  inline dims_type get_offset_col(Type0 index) {
+    return static_cast<dims_type>(index);
   }
 
-  template <typename... Dims_>
-  inline dims_type get_offset_row(dims_type index, Dims_... indices) {
-    return get_offset_row_sum(index, indices...);
+  template <typename Type0, typename... Types>
+  inline dims_type get_offset_row(Type0 index, Types... indices) {
+    return get_offset_row_sum(static_cast<dims_type>(index), indices...);
   }
 
-  template <typename... Dims_>
-  inline dims_type get_offset_row_sum(dims_type part_sum, dims_type index,
-                                      Dims_... indices) {
+  template <typename Type0, typename... Types>
+  inline dims_type get_offset_row_sum(dims_type part_sum, Type0 index,
+                                      Types... indices) {
     return get_offset_row_sum(
         part_sum * std::get<n_dims - sizeof...(indices) - 1>(this->dims) +
-            index,
+            static_cast<dims_type>(index),
         indices...);
   }
 
-  template <typename... Dims_>
-  inline dims_type get_offset_row_sum(dims_type part_sum, dims_type index) {
-    return part_sum * std::get<n_dims - 1>(this->dims) + index;
+  template <typename Type0, typename... Types>
+  inline dims_type get_offset_row_sum(dims_type part_sum, Type0 index) {
+    return part_sum * std::get<n_dims - 1>(this->dims) +
+           static_cast<dims_type>(index);
   }
 };
 
@@ -213,18 +215,18 @@ class multiarray_s : public multiarray<T, n_dims, ROW_MAJOR> {
   // operator() overload for array access
   // calculate the offset in the linear array
 
-  template <typename... Dims_>
-  inline T_no_pointer &at_colm(Dims_... indices) {
+  template <typename... Types>
+  inline T_no_pointer &at_colm(Types... indices) {
     return this->pointer[get_offset_col(indices...)];
   }
 
-  template <typename... Dims_>
-  inline T_no_pointer &at_row(Dims_... indices) {
+  template <typename... Types>
+  inline T_no_pointer &at_row(Types... indices) {
     return this->pointer[get_offset_row(indices...)];
   }
 
-  template <typename... Dims_>
-  inline T_no_pointer &operator()(Dims_... indices) {
+  template <typename... Types>
+  inline T_no_pointer &operator()(Types... indices) {
     if constexpr (ROW_MAJOR)
       return this->pointer[get_offset_row(indices...)];
     else
@@ -241,43 +243,48 @@ class multiarray_s : public multiarray<T, n_dims, ROW_MAJOR> {
   multiarray_s(const multiarray<T, n_dims, ROW_MAJOR> &array)
       : multiarray<T, n_dims, ROW_MAJOR>(array) {}
 
-  template <typename... Dims_>
-  multiarray_s(T _pointer, Dims_... _dims)
+  template <typename... Types>
+  multiarray_s(T _pointer, Types... _dims)
       : multiarray<T, n_dims, ROW_MAJOR>(_pointer, _dims...) {}
 
  private:
-  template <typename... Dims_>
-  inline dims_type get_offset_col(dims_type index, Dims_... indices) {
+  template <typename Type0, typename... Types>
+  inline dims_type get_offset_col(Type0 index, Types... indices) {
     constexpr dims_type i_dim = n_dims - sizeof...(indices) - 1;
-    return index - get_i_of_pack_num<i_dim, strides...>() +
+    return static_cast<dims_type>(index) -
+           get_i_of_pack_num<i_dim, strides...>() +
            std::get<i_dim>(this->dims) * get_offset_col(indices...);
   }
 
-  template <typename... Dims_>
-  inline dims_type get_offset_col(dims_type index) {
+  template <typename Type0, typename... Types>
+  inline dims_type get_offset_col(Type0 index) {
     constexpr dims_type i_dim = n_dims - 1;
-    return index - get_i_of_pack_num<i_dim, strides...>();
+    return static_cast<dims_type>(index) -
+           get_i_of_pack_num<i_dim, strides...>();
   }
 
-  template <typename... Dims_>
-  inline dims_type get_offset_row(dims_type index, Dims_... indices) {
-    return get_offset_row_sum(index - get_i_of_pack_num<0, strides...>(),
-                              indices...);
+  template <typename Type0, typename... Types>
+  inline dims_type get_offset_row(Type0 index, Types... indices) {
+    return get_offset_row_sum(
+        static_cast<dims_type>(index) - get_i_of_pack_num<0, strides...>(),
+        indices...);
   }
 
-  template <typename... Dims_>
-  inline dims_type get_offset_row_sum(dims_type part_sum, dims_type index,
-                                      Dims_... indices) {
+  template <typename Type0, typename... Types>
+  inline dims_type get_offset_row_sum(dims_type part_sum, Type0 index,
+                                      Types... indices) {
     constexpr dims_type i_dim = n_dims - sizeof...(indices) - 1;
-    return get_offset_row_sum(part_sum * std::get<i_dim>(this->dims) + index -
+    return get_offset_row_sum(part_sum * std::get<i_dim>(this->dims) +
+                                  static_cast<dims_type>(index) -
                                   get_i_of_pack_num<i_dim, strides...>(),
                               indices...);
   }
 
-  template <typename... Dims_>
-  inline dims_type get_offset_row_sum(dims_type part_sum, dims_type index) {
+  template <typename Type0, typename... Types>
+  inline dims_type get_offset_row_sum(dims_type part_sum, Type0 index) {
     constexpr dims_type i_dim = n_dims - 1;
-    return part_sum * std::get<i_dim>(this->dims) + index -
+    return part_sum * std::get<i_dim>(this->dims) +
+           static_cast<dims_type>(index) -
            get_i_of_pack_num<i_dim, strides...>();
   }
 };
