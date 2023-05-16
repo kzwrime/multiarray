@@ -8,7 +8,7 @@ See the [BUILDING](BUILDING.md) document.
 
 # Contributing
 
-You can see [cmake-init]https://github.com/friendlyanon/cmake-init first since this project is inited by cmake-init.
+You can see [cmake-init](https://github.com/friendlyanon/cmake-init) first since this project is inited by cmake-init.
 
 See the [CONTRIBUTING](CONTRIBUTING.md) document.
 
