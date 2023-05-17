@@ -16,13 +16,10 @@ jobs:
     steps:
     - uses: actions/checkout@v3
       with:
-        submodules: 'true'
+        submodules: 'recursive'
 
     - uses: actions/setup-python@v4
       with: { python-version: "3.8" }
-
-    - name: Update submodules
-      run: git submodule update --init --recursive
 
     - name: Install tree
       run: sudo apt-get update -q
@@ -54,19 +51,18 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
+      with:
+        submodules: 'recursive'
 
     - name: Install LCov
       run: sudo apt-get update -q
         && sudo apt-get install lcov -q -y
 
-    - name: Show file tree
-      run: tree .
-
     - name: Configure
       run: cmake --preset=ci-coverage
 
     - name: Build
-      run: cmake --build build/coverage -j 2 --verbose
+      run: cmake --build build/coverage -j 2
 
     - name: Test
       working-directory: build/coverage
@@ -89,6 +85,8 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
+      with:
+        submodules: 'recursive'
 
     - name: Configure
       run: cmake --preset=ci-sanitize
@@ -118,6 +116,8 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
+      with:
+        submodules: 'recursive'
 
     - name: Install static analyzers
       if: matrix.os == 'ubuntu-22.04'
@@ -171,6 +171,8 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
+      with:
+        submodules: 'recursive'
 
     - uses: actions/setup-python@v4
       with: { python-version: "3.8" }
