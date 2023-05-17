@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>ma namespace | multiarray</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,600,600i%7CSource+Code+Pro:400,400i,600" />
+  <link rel="stylesheet" href="m-dark+documentation.compiled.css" />
+  <link rel="icon" href="favicon-dark.png" type="image/png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#22272e" />
+</head>
+<body>
+<header><nav id="navigation">
+  <div class="m-container">
+    <div class="m-row">
+      <a href="index.html" id="m-navbar-brand" class="m-col-t-8 m-col-m-none m-left-m">multiarray</a>
+      <div class="m-col-t-4 m-hide-m m-text-right m-nopadr">
+        <a href="#search" class="m-doc-search-icon" title="Search" onclick="return showSearch()"><svg style="height: 0.9rem;" viewBox="0 0 16 16">
+          <path id="m-doc-search-icon-path" d="m6 0c-3.31 0-6 2.69-6 6 0 3.31 2.69 6 6 6 1.49 0 2.85-0.541 3.89-1.44-0.0164 0.338 0.147 0.759 0.5 1.15l3.22 3.79c0.552 0.614 1.45 0.665 2 0.115 0.55-0.55 0.499-1.45-0.115-2l-3.79-3.22c-0.392-0.353-0.812-0.515-1.15-0.5 0.895-1.05 1.44-2.41 1.44-3.89 0-3.31-2.69-6-6-6zm0 1.56a4.44 4.44 0 0 1 4.44 4.44 4.44 4.44 0 0 1-4.44 4.44 4.44 4.44 0 0 1-4.44-4.44 4.44 4.44 0 0 1 4.44-4.44z"/>
+        </svg></a>
+        <a id="m-navbar-show" href="#navigation" title="Show navigation"></a>
+        <a id="m-navbar-hide" href="#" title="Hide navigation"></a>
+      </div>
+      <div id="m-navbar-collapse" class="m-col-t-12 m-show-m m-col-m-none m-right-m">
+        <div class="m-row">
+          <ol class="m-col-t-6 m-col-m-none">
+            <li>
+              <a href="pages.html">Pages</a>
+              <ol>
+                <li><a href="about.html">About</a></li>
+              </ol>
+            </li>
+            <li><a href="namespaces.html">Namespaces</a></li>
+          </ol>
+          <ol class="m-col-t-6 m-col-m-none" start="3">
+            <li><a href="annotated.html">Classes</a></li>
+            <li><a href="files.html">Files</a></li>
+            <li class="m-show-m"><a href="#search" class="m-doc-search-icon" title="Search" onclick="return showSearch()"><svg style="height: 0.9rem;" viewBox="0 0 16 16">
+              <use href="#m-doc-search-icon-path" />
+            </svg></a></li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav></header>
+<main><article>
+  <div class="m-container m-container-inflatable">
+    <div class="m-row">
+      <div class="m-col-l-10 m-push-l-1">
+        <h1>
+          ma <span class="m-thin">namespace</span>
+        </h1>
+        <p><span></span></p>
+        <div class="m-block m-default">
+          <h3>Contents</h3>
+          <ul>
+            <li>
+              Reference
+              <ul>
+                <li><a href="#nested-classes">Classes</a></li>
+                <li><a href="#typedef-members">Typedefs</a></li>
+                <li><a href="#func-members">Functions</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+        <section id="nested-classes">
+          <h2><a href="#nested-classes">Classes</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <div class="m-doc-template">template&lt;<a href="namespacema.html#ad93f6dc28fdf7c3dae7149306629daae" class="m-doc">dims_<wbr />type</a> N, typename = void&gt;</div>
+              struct <a href="structma_1_1Dims__s.html" class="m-doc">Dims_s</a>
+            </dt>
+            <dd><span></span></dd>
+            <dt>
+              <div class="m-doc-template">template&lt;<a href="namespacema.html#ad93f6dc28fdf7c3dae7149306629daae" class="m-doc">dims_<wbr />type</a> N&gt;</div>
+              struct <a href="structma_1_1Dims__s_3_01N_00_01std_1_1enable__if__t_3_07N_01_4_010_08_4_01_4.html" class="m-doc">Dims_s&lt;N, std::enable_if_t&lt;(N&gt; 0)&gt;&gt;</a>
+            </dt>
+            <dd><span></span></dd>
+            <dt>
+              <div class="m-doc-template">template&lt;&gt;</div>
+              struct <a href="structma_1_1Dims__s_3_011_00_01void_01_4.html" class="m-doc">Dims_s&lt;1, void&gt;</a>
+            </dt>
+            <dd><span></span></dd>
+            <dt>
+              <div class="m-doc-template">template&lt;&gt;</div>
+              struct <a href="structma_1_1Dims__s_3_010_00_01void_01_4.html" class="m-doc">Dims_s&lt;0, void&gt;</a>
+            </dt>
+            <dd><span></span></dd>
+            <dt>
+              <div class="m-doc-template">template&lt;typename Tuple, std::size_t N&gt;</div>
+              struct <a href="structma_1_1TupleToString.html" class="m-doc">TupleToString</a>
+            </dt>
+            <dd><span></span></dd>
+            <dt>
+              <div class="m-doc-template">template&lt;typename Tuple&gt;</div>
+              struct <a href="structma_1_1TupleToString_3_01Tuple_00_011_01_4.html" class="m-doc">TupleToString&lt;Tuple, 1&gt;</a>
+            </dt>
+            <dd><span></span></dd>
+            <dt>
+              <div class="m-doc-template">template&lt;typename T, <a href="namespacema.html#ad93f6dc28fdf7c3dae7149306629daae" class="m-doc">dims_<wbr />type</a> n_dims, bool ROW_MAJOR = true&gt;</div>
+              class <a href="classma_1_1multiarray.html" class="m-doc">multiarray</a>
+            </dt>
+            <dd><span></span></dd>
+            <dt>
+              <div class="m-doc-template">template&lt;typename T, <a href="namespacema.html#ad93f6dc28fdf7c3dae7149306629daae" class="m-doc">dims_<wbr />type</a> n_dims, bool ROW_MAJOR = true, dims_type... strides&gt;</div>
+              class <a href="classma_1_1multiarray__s.html" class="m-doc">multiarray_s</a>
+            </dt>
+            <dd><span></span></dd>
+          </dl>
+        </section>
+        <section id="typedef-members">
+          <h2><a href="#typedef-members">Typedefs</a></h2>
+          <dl class="m-doc">
+            <dt>
+              using <a href="#ad93f6dc28fdf7c3dae7149306629daae" class="m-doc">dims_type</a> = std::size_t
+            </dt>
+            <dd><span></span></dd>
+            <dt>
+              <div class="m-doc-template">template&lt;dims_type NDims&gt;</div>
+              using <a href="#a161cf3c471738d10cfdb053804fd31cb" class="m-doc">dims_t</a> = typename <a href="structma_1_1Dims__s.html" class="m-doc">Dims_<wbr />s</a>&lt;NDims&gt;::type
+            </dt>
+            <dd><span></span></dd>
+          </dl>
+        </section>
+        <section id="func-members">
+          <h2><a href="#func-members">Functions</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#ac49af8f8323f51b8bc562967107e6662" class="m-doc">name</a>(</span><span class="m-doc-wrap">) -&gt; std::string</span>
+            </dt>
+            <dd>Return the name of this header-only library.</dd>
+            <dt>
+              <div class="m-doc-template">template&lt;typename... Args&gt;</div>
+              <span class="m-doc-wrap-bumper">auto <a href="#aac38afc0f15a2c0bfb359d29e68fe3cd" class="m-doc">tupleToString</a>(</span><span class="m-doc-wrap">const std::tuple&lt;Args...&gt;&amp; t) -&gt; std::string</span>
+            </dt>
+            <dd><span></span></dd>
+            <dt>
+              <div class="m-doc-template">template&lt;dims_type... Args&gt;</div>
+              <span class="m-doc-wrap-bumper">auto <a href="#affe54d1f46c767578100dfa61fa20107" class="m-doc">packNumToString</a>(</span><span class="m-doc-wrap">) -&gt; std::string</span>
+            </dt>
+            <dd><span></span></dd>
+            <dt>
+              <div class="m-doc-template">template&lt;int i, dims_type num&gt;</div>
+              <span class="m-doc-wrap-bumper">auto <a href="#ad814a043cddca43380aafc475e2b42ae" class="m-doc">get_i_of_pack_num</a>(</span><span class="m-doc-wrap">) -&gt; <a href="namespacema.html#ad93f6dc28fdf7c3dae7149306629daae" class="m-doc">dims_<wbr />type</a> <span class="m-label m-flat m-primary">constexpr</span></span>
+            </dt>
+            <dd><span></span></dd>
+            <dt>
+              <div class="m-doc-template">template&lt;int i, dims_type num, dims_type num1, dims_type... nums&gt;</div>
+              <span class="m-doc-wrap-bumper">auto <a href="#abb44a372d71b67e5287dc745e856ee2a" class="m-doc">get_i_of_pack_num</a>(</span><span class="m-doc-wrap">) -&gt; <a href="namespacema.html#ad93f6dc28fdf7c3dae7149306629daae" class="m-doc">dims_<wbr />type</a> <span class="m-label m-flat m-primary">constexpr</span></span>
+            </dt>
+            <dd><span></span></dd>
+          </dl>
+        </section>
+        <section>
+          <h2>Typedef documentation</h2>
+          <section class="m-doc-details" id="ad93f6dc28fdf7c3dae7149306629daae"><div>
+            <h3>
+              using ma::<wbr /><a href="#ad93f6dc28fdf7c3dae7149306629daae" class="m-doc-self">dims_type</a> = std::size_t
+              <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="multiarray_8hpp.html">&lt;multiarray/multiarray.hpp&gt;</a></div>
+            </h3>
+            <p><span></span></p>
+          </div></section>
+          <section class="m-doc-details" id="a161cf3c471738d10cfdb053804fd31cb"><div>
+            <h3>
+              <div class="m-doc-include m-code m-inverted m-right-m m-text-right"><span class="cp">#include</span> <a class="cpf" href="multiarray_8hpp.html">&lt;multiarray/multiarray.hpp&gt;</a></div>
+              <div class="m-doc-template">
+                template&lt;dims_type NDims&gt;
+              </div>
+              using ma::<wbr /><a href="#a161cf3c471738d10cfdb053804fd31cb" class="m-doc-self">dims_t</a> = typename <a href="structma_1_1Dims__s.html" class="m-doc">Dims_<wbr />s</a>&lt;NDims&gt;::type
+            </h3>
+            <p><span></span></p>
+          </div></section>
+        </section>
+        <section>
+          <h2>Function documentation</h2>
+          <section class="m-doc-details" id="ac49af8f8323f51b8bc562967107e6662"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">auto ma::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ac49af8f8323f51b8bc562967107e6662" class="m-doc-self">name</a>(</span><span class="m-doc-wrap">) -&gt; std::string</span></span>
+              <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="multiarray_8hpp.html">&lt;multiarray/multiarray.hpp&gt;</a></div>
+            </h3>
+            <p>Return the name of this header-only library.</p>
+          </div></section>
+          <section class="m-doc-details" id="aac38afc0f15a2c0bfb359d29e68fe3cd"><div>
+            <h3>
+              <div class="m-doc-include m-code m-inverted m-right-m m-text-right"><span class="cp">#include</span> <a class="cpf" href="multiarray_8hpp.html">&lt;multiarray/multiarray.hpp&gt;</a></div>
+              <div class="m-doc-template">
+                template&lt;typename... Args&gt;
+              </div>
+              <span class="m-doc-wrap-bumper">std::string ma::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#aac38afc0f15a2c0bfb359d29e68fe3cd" class="m-doc-self">tupleToString</a>(</span><span class="m-doc-wrap">const std::tuple&lt;Args...&gt;&amp; t)</span></span>
+            </h3>
+            <p><span></span></p>
+          </div></section>
+          <section class="m-doc-details" id="affe54d1f46c767578100dfa61fa20107"><div>
+            <h3>
+              <div class="m-doc-include m-code m-inverted m-right-m m-text-right"><span class="cp">#include</span> <a class="cpf" href="multiarray_8hpp.html">&lt;multiarray/multiarray.hpp&gt;</a></div>
+              <div class="m-doc-template">
+                template&lt;dims_type... Args&gt;
+              </div>
+              <span class="m-doc-wrap-bumper">std::string ma::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#affe54d1f46c767578100dfa61fa20107" class="m-doc-self">packNumToString</a>(</span><span class="m-doc-wrap">)</span></span>
+            </h3>
+            <p><span></span></p>
+          </div></section>
+          <section class="m-doc-details" id="ad814a043cddca43380aafc475e2b42ae"><div>
+            <h3>
+              <div class="m-doc-include m-code m-inverted m-right-m m-text-right"><span class="cp">#include</span> <a class="cpf" href="multiarray_8hpp.html">&lt;multiarray/multiarray.hpp&gt;</a></div>
+              <div class="m-doc-template">
+                template&lt;int i, dims_type num&gt;
+              </div>
+              <span class="m-doc-wrap-bumper"><a href="namespacema.html#ad93f6dc28fdf7c3dae7149306629daae" class="m-doc">dims_<wbr />type</a> ma::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ad814a043cddca43380aafc475e2b42ae" class="m-doc-self">get_i_of_pack_num</a>(</span><span class="m-doc-wrap">) <span class="m-label m-primary">constexpr</span></span></span>
+            </h3>
+            <p><span></span></p>
+          </div></section>
+          <section class="m-doc-details" id="abb44a372d71b67e5287dc745e856ee2a"><div>
+            <h3>
+              <div class="m-doc-include m-code m-inverted m-right-m m-text-right"><span class="cp">#include</span> <a class="cpf" href="multiarray_8hpp.html">&lt;multiarray/multiarray.hpp&gt;</a></div>
+              <div class="m-doc-template">
+                template&lt;int i, dims_type num, dims_type num1, dims_type... nums&gt;
+              </div>
+              <span class="m-doc-wrap-bumper"><a href="namespacema.html#ad93f6dc28fdf7c3dae7149306629daae" class="m-doc">dims_<wbr />type</a> ma::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#abb44a372d71b67e5287dc745e856ee2a" class="m-doc-self">get_i_of_pack_num</a>(</span><span class="m-doc-wrap">) <span class="m-label m-primary">constexpr</span></span></span>
+            </h3>
+            <p><span></span></p>
+          </div></section>
+        </section>
+      </div>
+    </div>
+  </div>
+</article></main>
+<div class="m-doc-search" id="search">
+  <a href="#!" onclick="return hideSearch()"></a>
+  <div class="m-container">
+    <div class="m-row">
+      <div class="m-col-m-8 m-push-m-2">
+        <div class="m-doc-search-header m-text m-small">
+          <div><span class="m-label m-default">Tab</span> / <span class="m-label m-default">T</span> to search, <span class="m-label m-default">Esc</span> to close</div>
+          <div id="search-symbolcount">&hellip;</div>
+        </div>
+        <div class="m-doc-search-content">
+          <form>
+            <input type="search" name="q" id="search-input" placeholder="Loading &hellip;" disabled="disabled" autofocus="autofocus" autocomplete="off" spellcheck="false" />
+          </form>
+          <noscript class="m-text m-danger m-text-center">Unlike everything else in the docs, the search functionality <em>requires</em> JavaScript.</noscript>
+          <div id="search-help" class="m-text m-dim m-text-center">
+            <p class="m-noindent">Search for symbols, directories, files, pages or
+            modules. You can omit any prefix from the symbol or file path; adding a
+            <code>:</code> or <code>/</code> suffix lists all members of given symbol or
+            directory.</p>
+            <p class="m-noindent">Use <span class="m-label m-dim">&darr;</span>
+            / <span class="m-label m-dim">&uarr;</span> to navigate through the list,
+            <span class="m-label m-dim">Enter</span> to go.
+            <span class="m-label m-dim">Tab</span> autocompletes common prefix, you can
+            copy a link to the result using <span class="m-label m-dim">⌘</span>
+            <span class="m-label m-dim">L</span> while <span class="m-label m-dim">⌘</span>
+            <span class="m-label m-dim">M</span> produces a Markdown link.</p>
+          </div>
+          <div id="search-notfound" class="m-text m-warning m-text-center">Sorry, nothing was found.</div>
+          <ul id="search-results"></ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="search-v1.js"></script>
+<script src="searchdata-v1.js" async="async"></script>
+<footer><nav>
+  <div class="m-container">
+    <div class="m-row">
+      <div class="m-col-l-10 m-push-l-1">
+        <p>multiarray. Created with <a href="https://doxygen.org/">Doxygen</a> 1.9.1 and <a href="https://mcss.mosra.cz/">m.css</a>.</p>
+      </div>
+    </div>
+  </div>
+</nav></footer>
+</body>
+</html>
