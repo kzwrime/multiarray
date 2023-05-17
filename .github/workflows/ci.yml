@@ -21,6 +21,16 @@ jobs:
     - uses: actions/setup-python@v4
       with: { python-version: "3.8" }
 
+    - name: Update submodules
+      run: git submodule update --init --recursive
+
+    - name: Install tree
+      run: sudo apt-get update -q
+        && sudo apt-get install tree -q -y
+
+    - name: Show file tree
+      run: tree .
+
     - name: Install codespell
       run: pip3 install codespell
 
@@ -47,10 +57,7 @@ jobs:
 
     - name: Install LCov
       run: sudo apt-get update -q
-        && sudo apt-get install lcov tree -q -y
-
-    - name: Show file tree
-      run: tree .
+        && sudo apt-get install lcov -q -y
 
     - name: Configure
       run: cmake --preset=ci-coverage
