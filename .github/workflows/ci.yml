@@ -59,11 +59,14 @@ jobs:
       run: sudo apt-get update -q
         && sudo apt-get install lcov -q -y
 
+    - name: Show file tree
+      run: tree .
+
     - name: Configure
       run: cmake --preset=ci-coverage
 
     - name: Build
-      run: cmake --build build/coverage -j 2
+      run: cmake --build build/coverage -j 2 --verbose
 
     - name: Test
       working-directory: build/coverage
