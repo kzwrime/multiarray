@@ -47,7 +47,10 @@ jobs:
 
     - name: Install LCov
       run: sudo apt-get update -q
-        && sudo apt-get install lcov -q -y
+        && sudo apt-get install lcov tree -q -y
+
+    - name: Show file tree
+      run: tree .
 
     - name: Configure
       run: cmake --preset=ci-coverage

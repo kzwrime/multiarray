@@ -2,5 +2,5 @@
 builtin = clear,rare,en-GB_to_en-US,names,informal,code
 check-filenames =
 check-hidden =
-skip = */.git,*/build,*/prefix,submodules
+skip = */.git,*/build,*/prefix,submodules,.vscode
 quiet-level = 2
